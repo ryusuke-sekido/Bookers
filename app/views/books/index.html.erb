@@ -1,0 +1,45 @@
+
+<table border="1">
+　<head>
+　  <tr>
+　    <th>投稿一覧</th>
+　  </tr>
+　</head>
+　<body>
+   <tr>
+      <% @books.each do |book| %>
+    <td>タイトル
+     <span>
+    <%= book.title %>
+    <%= book.body %>
+    <%= link_to "Show", book_path(book.id) %>
+    <%= link_to "Edit", edit_book_path(book.id) %>
+    <%= link_to "Destroy", book_path(book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+     </span>
+    </td>
+   </tr>
+  </body>
+ 
+<% end %>
+
+<foot>
+
+<%= form_with model: Book.new do |f| %>
+
+  <h4>タイトル</h4>
+  <%= f.text_field :title %>
+
+  <h4>本文</h4>
+  <%= f.text_area :body %>
+
+  <%= f.submit 'Create Book' %>
+
+<% end %>
+
+</foot>  
+
+
+
+
+
+

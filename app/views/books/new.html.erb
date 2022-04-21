@@ -1,0 +1,27 @@
+<h1>新規投稿</h1>
+ <% if @book.errors.any? %>
+  <%= @book.errors.count %>error
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<%= form_with model: Book.new do |f| %>
+
+  <h4>タイトル</h4>
+  <%= f.text_field :title %>
+
+  <h4>本文</h4>
+  <%= f.text_area :body %>
+
+  <%= f.submit '投稿' %>
+  
+<footer>
+   <%= link_to "投稿一覧", books_path %>
+</footer>  
+ 
+<% end %>
+
